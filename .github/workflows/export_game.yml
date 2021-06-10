@@ -5,7 +5,7 @@ on:
       - release
 
 env:
-  GODOT_VERSION: 3.2.3
+  GODOT_VERSION: 3.3.2
   GAME_PATH: .
   
 jobs:
@@ -33,4 +33,3 @@ jobs:
         base_version: 0.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.EXPORT_GITHUB_TOKEN }}
-
