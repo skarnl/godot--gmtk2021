@@ -1,4 +1,27 @@
 extends Node2D
 
+
+onready var target = $Target
+onready var suspects = $Suspects
+
+
+var target_config
+
+
 func _ready():
-	print("game")
+#	get target configuration
+	target_config = target.get_configuration()
+
+#   generate variaties (3 bijv) en assign die aan paar suspects
+	suspects.set_target_configuration(target_config)
+
+
+#   genereer dan de overige suspects
+
+#   wanneer erop geklikt, selecteer en hou bij welke geklikt zijn
+#   bereken elke keer het eindresultaat
+
+#   toon het eindresultaat direct
+
+#    -> dit wordt later pas gedaan ON CLICK van de process-knop
+	pass
