@@ -12,21 +12,32 @@ onready var mouth = $Mouth
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
+var PARTS = ['hair', 'ears', 'eyes', 'nose', 'mouth']
+
+
 func _ready() -> void:
 	rng.randomize()
 	
 #	head - don't set it now, since we only have a circled variant
 	
-	_set_random_frame(hair)
-	_set_random_frame(ears)
-	_set_random_frame(eyes)
-	_set_random_frame(nose)
-	_set_random_frame(mouth)
-
+#	this will make all the parts random
+	set_configuration({})
 
 	# debug
 	print(get_configuration())
 
+
+func set_configuration(config: Dictionary, exclude: Dictionary = {}) -> void:
+	for part in ['hair', 'ears', 'eyes', 'nose', 'mouth']:
+		var sprite = self[part]
+		
+		if (config.has(part)):
+			sprite.set_frame_coords(Vector2( config[part], sprite.get_frame_coords().y))
+		elif (exclude.has(part)):
+			pass
+		else:
+			_set_random_frame(sprite)
+			
 
 func _get_random_frame(sprite: Sprite) -> float:
 	return rng.randf_range(0, sprite.hframes)
