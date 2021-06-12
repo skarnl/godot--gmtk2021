@@ -16,6 +16,8 @@ func _init() -> void:
 func get_random_frame(excludes = []) -> int:
 	var result = rng.randi_range(0, VARIANTS - 1)
 	
+	assert(excludes.size() < VARIANTS)
+	
 	while excludes.has(result):
 		result = rng.randi_range(0, VARIANTS - 1)
 		
