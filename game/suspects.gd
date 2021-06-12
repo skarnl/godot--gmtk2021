@@ -15,7 +15,6 @@ export (DIFFICULTY) var difficulty = DIFFICULTY.EASY
 export (int) var suspects = 9
 
 
-var rows = 3
 var cols = 3
 var cell_size = 200
 
@@ -23,23 +22,27 @@ var cell_size = 200
 func set_target_configuration(target_config: Configuration) -> void:
 	print("target = ", target_config)
 	
+	_clear_market()
 	_create_variants(target_config)
 	_fill_market()
+	_shuffle_market_positions()
 
 
-func _create_variants(target_config: Configuration):
+func _clear_market() -> void:
 	for c in get_children():
 		c.queue_free()
-	
+
+
+
+func _create_variants(target_config: Configuration) -> void:
 	for i in difficulty:
 		var p = PersonScene.instance()
 		add_child(p)
-		p.position = Vector2((i % cols) * cell_size, 0.0)
-		
 		p.set_configuration( _get_configuration(i, target_config) )
 		
 
-func _get_configuration( index: int, target_config: Configuration):
+
+func _get_configuration( index: int, target_config: Configuration) -> Configuration:
 	match difficulty:
 		DIFFICULTY.EASY:
 			match index:
@@ -81,8 +84,10 @@ func _get_configuration( index: int, target_config: Configuration):
 					
 				4:
 					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.EARS])
-					
+		
+	return Configuration.new()
 	
+
 func _create_forced_configuration(base_configuration: Configuration, parts_to_overwrite = []) -> Configuration:
 	var c = Helpers.clone(base_configuration)
 	
@@ -92,9 +97,26 @@ func _create_forced_configuration(base_configuration: Configuration, parts_to_ov
 		
 	return c
 
+
 func _fill_market():
-	pass
+	var extras_needed = suspects - difficulty
+	
+	for i in extras_needed:
+		var p = PersonScene.instance()
+		add_child(p)
 	
 	
 func _shuffle_market_positions():
-	pass
+	var index = 0
+	var row = 0
+	
+	var shuffled_children = get_children().duplicate()
+	shuffled_children.shuffle()
+	
+	for c in shuffled_children:
+		c.position = Vector2(index % cols * cell_size, row * cell_size)
+		
+		if index % cols == 2:
+			row += 1
+			
+		index += 1
