@@ -23,7 +23,7 @@ func _ready():
 #   toon het eindresultaat direct
 
 #    -> dit wordt later pas gedaan ON CLICK van de process-knop
-	pass
+
 
 func _on_Market_selection_updated(configurations: Array) -> void:
 	if configurations.size() == 0:

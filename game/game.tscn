@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://game/market.gd" type="Script" id=1]
+[ext_resource path="res://entities/market/market.gd" type="Script" id=1]
 [ext_resource path="res://game/game.gd" type="Script" id=2]
 [ext_resource path="res://gui/hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/result/result.tscn" type="PackedScene" id=4]
