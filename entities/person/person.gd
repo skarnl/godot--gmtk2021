@@ -11,24 +11,33 @@ onready var mouth = $Mouth
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
-
-var PARTS = ['hair', 'ears', 'eyes', 'nose', 'mouth']
+var VARIANTS = 4
+var PARTS = ['ears', 'eyes', 'nose', 'mouth', 'hair']
 
 
 func _ready() -> void:
 	rng.randomize()
 	
 #	head - don't set it now, since we only have a circled variant
+	_correct_frame_numbers()
 	
-#	this will make all the parts random
+#	this will make all the parts random, since we pass in an empty configuration
 	set_configuration({})
 
-	# debug
-	print(get_configuration())
 
+# fix the hframes, so we don't have to adjust them in the editor when adding new variants
+func _correct_frame_numbers() -> void:
+	var vframe = 1.0
+	for part in PARTS:
+		self[part].set_vframes(6)
+		self[part].set_hframes(VARIANTS)
+		self[part].set_frame_coords(Vector2(0, vframe))
+		
+		vframe += 1.0
+		
 
 func set_configuration(config: Dictionary, exclude: Dictionary = {}) -> void:
-	for part in ['hair', 'ears', 'eyes', 'nose', 'mouth']:
+	for part in PARTS:
 		var sprite = self[part]
 		
 		if (config.has(part)):
@@ -52,7 +61,7 @@ func get_configuration() -> Dictionary:
 	
 	var config = {}
 	
-	for sprite in ['hair', 'ears', 'eyes', 'nose', 'mouth']:
-		config[sprite] = self[sprite].get_frame_coords().x
+	for part in PARTS:
+		config[part] = self[part].get_frame_coords().x
 
 	return config

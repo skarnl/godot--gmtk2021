@@ -10,45 +10,45 @@ script = ExtResource( 1 )
 rotation = -0.00068551
 texture = ExtResource( 2 )
 centered = false
-hframes = 3
+hframes = 4
 vframes = 6
 
 [node name="Ears" type="Sprite" parent="."]
 rotation = -0.00068551
 texture = ExtResource( 2 )
 centered = false
-hframes = 3
+hframes = 4
 vframes = 6
-frame = 3
+frame = 4
 
 [node name="Eyes" type="Sprite" parent="."]
 rotation = -0.00068551
 texture = ExtResource( 2 )
 centered = false
-hframes = 3
+hframes = 4
 vframes = 6
-frame = 6
+frame = 11
 
 [node name="Nose" type="Sprite" parent="."]
 rotation = -0.00068551
 texture = ExtResource( 2 )
 centered = false
-hframes = 3
+hframes = 4
 vframes = 6
-frame = 9
+frame = 12
 
 [node name="Mouth" type="Sprite" parent="."]
 rotation = -0.00068551
 texture = ExtResource( 2 )
 centered = false
-hframes = 3
+hframes = 4
 vframes = 6
-frame = 12
+frame = 16
 
 [node name="Hair" type="Sprite" parent="."]
 rotation = -0.00068551
 texture = ExtResource( 2 )
 centered = false
-hframes = 3
+hframes = 4
 vframes = 6
-frame = 15
+frame = 20
