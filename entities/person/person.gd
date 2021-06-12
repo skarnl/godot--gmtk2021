@@ -9,14 +9,10 @@ onready var nose = $Nose
 onready var mouth = $Mouth
 
 
-var mark_as_variant = false
-
-
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+const PARTS = [PersonParts.EARS, PersonParts.EYES, PersonParts.NOSE, PersonParts.MOUTH, PersonParts.HAIR]
 
-
-var PARTS = [PersonParts.EARS, PersonParts.EYES, PersonParts.NOSE, PersonParts.MOUTH, PersonParts.HAIR]
-
+var _configuration:Configuration
 
 func _ready() -> void:
 	rng.randomize()
@@ -48,23 +44,16 @@ func _correct_frame_numbers() -> void:
 		
 
 func set_configuration(config: Configuration, exclude: Dictionary = {}) -> void:
+	_configuration = config
+	
 	for part in PARTS:
 		var sprite = self[part]
 		
-		if (part in config):
-			sprite.set_frame_coords(Vector2( config[part], sprite.get_frame_coords().y))
+		if (part in _configuration):
+			sprite.set_frame_coords(Vector2( _configuration[part], sprite.get_frame_coords().y))
 
 
 
 func get_configuration() -> Configuration:
-	var config = {}
-	
-	for part in PARTS:
-		config[part] = self[part].get_frame_coords().x
+	return _configuration
 
-	return Configuration.new(config)
-
-
-func _draw() -> void:
-	if OS.is_debug_build() and mark_as_variant:
-		draw_rect(Rect2(Vector2(10.0, 10.0), Vector2(190.00, 190.00)), Color.crimson.lightened(0.4))
