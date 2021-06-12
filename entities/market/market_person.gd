@@ -1,7 +1,7 @@
 extends Area2D
 
 
-signal selected(config)
+signal selected
 signal deselected
 
 
@@ -17,7 +17,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		_selected = !_selected
 		
 		if _selected:
-			emit_signal('selected', person.get_configuration())
+			emit_signal('selected')
 		else:
 			emit_signal('deselected')
 
@@ -45,9 +45,6 @@ func set_configuration(config:Configuration) -> void:
 
 func get_configuration() -> Configuration:
 	return person.get_configuration()
-
-
-
 
 
 func is_selected() -> bool:
