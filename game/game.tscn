@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/suspects.gd" type="Script" id=1]
 [ext_resource path="res://game/game.gd" type="Script" id=2]
 [ext_resource path="res://gui/hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/result/result.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/target/target.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entities/person/person.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -61,12 +60,3 @@ text = "SUSPECTS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Person" parent="." instance=ExtResource( 6 )]
-position = Vector2( 239.822, 731.966 )
-
-[node name="Person2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 556.982, 733.747 )
-
-[node name="Person3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 373.457, 988.544 )

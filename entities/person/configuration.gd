@@ -3,12 +3,14 @@ extends Object
 
 const VARIANTS = 4
 
+
 var head: int = 0
 var hair: int
 var eyes: int
 var mouth: int
 var ears: int
 var nose: int
+
 
 func _init(initial_config: Dictionary = {}) -> void:
 	for k in initial_config.keys():
@@ -17,13 +19,17 @@ func _init(initial_config: Dictionary = {}) -> void:
 
 
 func _to_string() -> String:
+	return JSON.print(_to_dictionary())
+
+
+func _to_dictionary() -> Dictionary:
 	var d = {}
 	
-	d.head = head
-	d.hair = hair
-	d.eyes = eyes
-	d.mouth = mouth
-	d.ears = ears
-	d.nose = nose
+	for k in keys():
+		d[k] = self[k]
 	
-	return JSON.print(d)
+	return d
+
+
+func keys() -> Array:
+	return [PersonParts.HEAD, PersonParts.HAIR, PersonParts.EYES, PersonParts.MOUTH, PersonParts.EARS, PersonParts.NOSE]
