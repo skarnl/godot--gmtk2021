@@ -4,19 +4,21 @@ extends Node2D
 var target_config
 
 
-onready var target = $Target
-onready var result = $Result
-onready var market = $Market
-
+onready var target := $Target
+onready var result := $Result
+onready var market := $Market
 
 func _ready():
+	_on_ready()
+	
+	
+func _on_ready():
 	result.hide()
 	
 #	get target configuration
 	target_config = target.get_configuration()
 
 	market.set_target_configuration(target_config)
-	
 	market.connect('selection_updated', self, '_on_Market_selection_updated')
 
 #   bereken elke keer het eindresultaat
@@ -43,18 +45,12 @@ func _calculate_combined_configuration(configurations: Array) -> Configuration:
 	
 	# prepare counted object
 	for part in PersonParts.keys():
-		var temp_collection := {}
+		
 		var highest_count := 0
 		var value_of_highest_count := -1
 		
 		# get all the values for the current part
-		for config in configurations:
-			var value = config[part]
-			
-			if temp_collection.has(value):
-				temp_collection[value] += 1
-			else:
-				temp_collection[value] = 1
+		var temp_collection = _get_counts_per_part(part, configurations)
 			
 		# get the highest counted value
 		var values = temp_collection.keys();
@@ -73,3 +69,17 @@ func _calculate_combined_configuration(configurations: Array) -> Configuration:
 		merged_configuration[part] = value_of_highest_count
 		
 	return merged_configuration
+
+
+func _get_counts_per_part(part: String, configurations: Array) -> Dictionary:
+	var temp_collection := {}
+	
+	for config in configurations:
+		var value = config[part]
+		
+		if temp_collection.has(value):
+			temp_collection[value] += 1
+		else:
+			temp_collection[value] = 1
+	
+	return temp_collection

@@ -1,5 +1,5 @@
-class_name Configuration
 extends Object
+class_name Configuration
 
 const VARIANTS = 4
 

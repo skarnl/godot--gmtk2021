@@ -5,3 +5,6 @@
 
 [node name="Game" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Market" parent="." index="3"]
+market_size = 6

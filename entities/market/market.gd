@@ -15,7 +15,7 @@ const MarketPersonScene = preload('res://entities/market/market_person.tscn')
 
 
 export (DIFFICULTY) var difficulty = DIFFICULTY.EASY
-export (int) var market_size = 9
+export (int) var market_size = 12
 
 
 var cols = 3
@@ -23,8 +23,6 @@ var cell_size = 200
 
 
 func set_target_configuration(target_config: Configuration) -> void:
-	print("target = ", target_config)
-	
 	_clear_market()
 	_create_variants(target_config)
 	_fill_market()
@@ -64,51 +62,54 @@ func _get_configuration( index: int, target_config: Configuration, adjusted_valu
 		DIFFICULTY.EASY:
 			match index:
 				0:
-					return _create_forced_configuration(target_config, [PersonParts.NOSE, PersonParts.HAIR], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.NOSE, PersonParts.HAIR], adjusted_values)
 				1:
-					return _create_forced_configuration(target_config, [PersonParts.MOUTH], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.MOUTH], adjusted_values)
 				2:
-					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.EARS], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EYES, PersonParts.EARS], adjusted_values)
 		
 		DIFFICULTY.MEDIUM:
 			match index:
 				0:
-					return _create_forced_configuration(target_config, [PersonParts.NOSE, PersonParts.MOUTH], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.NOSE, PersonParts.MOUTH], adjusted_values)
 					
 				1:
-					return _create_forced_configuration(target_config, [PersonParts.MOUTH, PersonParts.EARS], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.MOUTH, PersonParts.EARS], adjusted_values)
 					
 				2:
-					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.EARS, PersonParts.HAIR], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EYES, PersonParts.EARS, PersonParts.HAIR], adjusted_values)
 										
 				3:
-					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.HAIR], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.HAIR], adjusted_values)
 					
 			
 		DIFFICULTY.HARD:
 			match index:
 				0:
-					return _create_forced_configuration(target_config, [PersonParts.NOSE, PersonParts.EARS, PersonParts.MOUTH], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.NOSE, PersonParts.EARS, PersonParts.MOUTH], adjusted_values)
 					
 				1:
-					return _create_forced_configuration(target_config, [PersonParts.EARS, PersonParts.MOUTH, PersonParts.HAIR], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EARS, PersonParts.MOUTH, PersonParts.HAIR], adjusted_values)
 					
 				2:
-					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.MOUTH, PersonParts.HAIR], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EYES, PersonParts.MOUTH, PersonParts.HAIR], adjusted_values)
 					
 				3:
-					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.HAIR], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.HAIR], adjusted_values)
 					
 				4:
-					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.EARS], adjusted_values)
+					return _create_guided_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.EARS], adjusted_values)
 		
 	return {
 		config = Configuration.new(),
 		adjusted_values = {}
 	}
 	
-
-func _create_forced_configuration(base_configuration: Configuration, parts_to_overwrite: Array, adjusted_values: Dictionary) -> Dictionary:
+## Create a configuration from some instructions
+##
+## @param parts_to_overwrite {Array} - an array with what parts to overwrite from the given base_configuration
+## @returns Dictionary - will contain the configuration and the adjusted values, so we can keep track on them
+func _create_guided_configuration(base_configuration: Configuration, parts_to_overwrite: Array, adjusted_values: Dictionary) -> Dictionary:
 	var c = Helpers.clone(base_configuration)
 	var _adjusted_values = {}
 	
@@ -135,12 +136,16 @@ func _fill_market() -> void:
 	
 	
 func _shuffle_market_positions() -> void:
-	var index = 0
-	
 	var shuffled_children = get_children().duplicate()
 	shuffled_children.shuffle()
 	
-	for c in shuffled_children:
+	_position_in_grid(shuffled_children)
+
+
+func _position_in_grid(children: Array) -> void:
+	var index = 0
+	
+	for c in children:
 		c.position = Vector2(index % cols * cell_size, index / cols * cell_size)
 		
 		index += 1

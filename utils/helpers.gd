@@ -26,3 +26,5 @@ func get_random_frame(excludes = []) -> int:
 
 func clone(config: Configuration) -> Configuration:
 	return Configuration.new(config._to_dictionary())
+
+

@@ -21,7 +21,7 @@ enum GameState {
 
 const BASE_LEVELS_PATH = 'res://game/'
 var current_level = -1
-var levels = ['level1.tscn', 'level2.tscn']
+var levels = ['tutorial/tutorial', 'level1', 'level2']
 
 var _current_state: int = GameState.SPLASH setget _set_current_state
 var _previous_state: int
@@ -40,7 +40,7 @@ func goto_next_level():
 	
 	if current_level < levels.size():
 		# TODO: some kind of screen transition / animation
-		SceneLoader.goto_scene(BASE_LEVELS_PATH + levels[current_level])
+		SceneLoader.goto_scene(BASE_LEVELS_PATH + levels[current_level] + '.tscn')
 	else:
 		emit_signal('victory')
 	
