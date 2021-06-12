@@ -5,6 +5,9 @@
 extends Node2D
 
 
+signal selection_updated(configurations)
+
+
 enum DIFFICULTY { EASY = 3, MEDIUM = 4, HARD = 5} # 5 is de max nu, totdat we meer variaties hebben qua onderdelen ^^
 
 
@@ -93,7 +96,7 @@ func _get_configuration( index: int, target_config: Configuration) -> Configurat
 func _create_forced_configuration(base_configuration: Configuration, parts_to_overwrite = []) -> Configuration:
 	var c = Helpers.clone(base_configuration)
 	
-	for part in c.keys():
+	for part in PersonParts.keys():
 		if parts_to_overwrite.has(part):
 			c[part] = Helpers.get_random_frame([c[part]])
 		
@@ -126,10 +129,13 @@ func _shuffle_market_positions() -> void:
 
 func _add_listeners() -> void:
 	for c in get_children():
-		c.connect('selected', self, '_on_MarketPerson_selected')
+		c.connect('selected', self, '_on_MarketPerson_selection_changed')
+		c.connect('deselected', self, '_on_MarketPerson_selection_changed')
 
 
-func _on_MarketPerson_selected() -> void:
+func _on_MarketPerson_selection_changed() -> void:
+	print('_on_MarketPerson_selection_changed')
+	
 	var selected_configurations = []
 	
 	for c in get_children():
@@ -137,3 +143,5 @@ func _on_MarketPerson_selected() -> void:
 			selected_configurations.append(c.get_configuration())
 
 	print(selected_configurations)
+
+	emit_signal('selection_updated', selected_configurations)
