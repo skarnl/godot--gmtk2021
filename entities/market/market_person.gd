@@ -11,6 +11,8 @@ onready var person := $Person
 var _selected := false
 var mark_as_variant := false
 
+var _debug := false
+
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton and event.pressed):
@@ -24,6 +26,17 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		_update_selected_render()
 
 
+func _input(event: InputEvent) -> void:
+	if OS.is_debug_build():
+		if event is InputEventKey and event.is_action_pressed('debug_toggle'):
+			_debug = true
+			update()
+		
+		if event is InputEventKey and event.is_action_released('debug_toggle'):
+			_debug = false
+			update()
+
+
 func _update_selected_render() -> void:
 #	TODO render hier iets om aan te geven dat het geselecteerd is of niet
 	update()
@@ -31,7 +44,7 @@ func _update_selected_render() -> void:
 
 
 func _draw() -> void:
-	if OS.is_debug_build() and mark_as_variant:
+	if OS.is_debug_build() and mark_as_variant and _debug:
 		draw_rect(Rect2(Vector2(10.0, 10.0), Vector2(190.00, 190.00)), Color.crimson.lightened(0.4))
 		
 	if _selected:
