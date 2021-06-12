@@ -38,8 +38,6 @@ func start_game():
 func goto_next_level():
 	current_level += 1
 	
-	print('current_level = ', current_level)
-	
 	if current_level < levels.size():
 		# TODO: some kind of screen transition / animation
 		SceneLoader.goto_scene(BASE_LEVELS_PATH + levels[current_level])
