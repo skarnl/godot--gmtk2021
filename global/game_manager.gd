@@ -21,7 +21,7 @@ enum GameState {
 
 const BASE_LEVELS_PATH = 'res://game/'
 var current_level = -1
-var levels = ['tutorial/tutorial', 'level1', 'level2']
+var levels = ['tutorial/tutorial', 'game']
 
 var _current_state: int = GameState.SPLASH setget _set_current_state
 var _previous_state: int
@@ -43,6 +43,11 @@ func goto_next_level():
 		SceneLoader.goto_scene(BASE_LEVELS_PATH + levels[current_level] + '.tscn')
 	else:
 		emit_signal('victory')
+		
+		# HACKKKK
+		current_level -= 1
+		
+		_restart()
 	
 	
 func game_over():
@@ -71,10 +76,8 @@ func transition_to(new_state: int) -> void:
 func _input(event):
 	if event is InputEventKey:
 		if event.is_action_pressed('restart'):
-			#hack so we restart the current level ^^
-			current_level = clamp(current_level - 1, -1, levels.size())
+			_restart()
 			
-			transition_to(GameState.GAME)
 		elif event.is_action_pressed('pause'):
 			match _current_state:
 				GameState.GAME:
@@ -87,3 +90,10 @@ func _input(event):
 func _set_current_state(new_state:int) -> void:
 	_previous_state = _current_state
 	_current_state = new_state
+
+
+func _restart() -> void:
+	#hack so we restart the current level ^^
+	current_level = clamp(current_level - 1, -1, levels.size())
+			
+	transition_to(GameState.GAME)

@@ -60,3 +60,7 @@ func _on_ForcedMarket_selection_updated(configurations: Array) -> void:
 	# toon de mogelijkheden en dat er dus niks gegetoond kan worden als het 'gelijk' is qua score
 	
 	_on_Market_selection_updated(configurations)
+
+
+func _on_NextLevelButton_pressed() -> void:
+	Game.goto_next_level()

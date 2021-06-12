@@ -15,7 +15,7 @@ const MarketPersonScene = preload('res://entities/market/market_person.tscn')
 
 
 export (DIFFICULTY) var difficulty = DIFFICULTY.EASY
-export (int) var market_size = 12
+export (int) var market_size = 6
 
 
 var cols = 3

@@ -7,6 +7,7 @@ var target_config
 onready var target := $Target
 onready var result := $Result
 onready var market := $Market
+onready var next_level_button := $NextLevelButton
 
 func _ready():
 	_on_ready()
@@ -14,6 +15,7 @@ func _ready():
 	
 func _on_ready():
 	result.hide()
+	next_level_button.hide()
 	
 #	get target configuration
 	target_config = target.get_configuration()
@@ -39,6 +41,11 @@ func _on_Market_selection_updated(configurations: Array) -> void:
 		
 		# TEMP DEBUG
 		result.mark_as_success = combined_configuration.get_hash() == target_config.get_hash()
+		
+		if result.mark_as_success:
+			next_level_button.show()
+		else:
+			next_level_button.hide()
 
 func _calculate_combined_configuration(configurations: Array) -> Configuration:
 	var merged_configuration = Configuration.new()
@@ -83,3 +90,10 @@ func _get_counts_per_part(part: String, configurations: Array) -> Dictionary:
 			temp_collection[value] = 1
 	
 	return temp_collection
+
+
+func _on_NextLevelButton_pressed() -> void:
+	# increase level-counter
+	# so we can increase difficulty / market-size etc
+	
+	Game._restart()

@@ -60,3 +60,15 @@ text = "SUSPECTS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NextLevelButton" type="Button" parent="."]
+margin_left = 1507.4
+margin_top = 1138.57
+margin_right = 1519.4
+margin_bottom = 1158.57
+text = "NEXT LEVEL >"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="NextLevelButton" to="." method="_on_NextLevelButton_pressed"]
