@@ -29,3 +29,6 @@ func _to_dictionary() -> Dictionary:
 		d[k] = self[k]
 	
 	return d
+
+func get_hash() -> int:
+	return _to_dictionary().hash()
