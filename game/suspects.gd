@@ -8,7 +8,7 @@ extends Node2D
 enum DIFFICULTY { EASY = 3, MEDIUM = 4, HARD = 5} # 5 is de max nu, totdat we meer variaties hebben qua onderdelen ^^
 
 
-const PersonScene = preload('res://entities/person/person.tscn')
+const MarketPersonScene = preload('res://entities/market/market_person.tscn')
 
 
 export (DIFFICULTY) var difficulty = DIFFICULTY.EASY
@@ -26,6 +26,7 @@ func set_target_configuration(target_config: Configuration) -> void:
 	_create_variants(target_config)
 	_fill_market()
 	_shuffle_market_positions()
+	_add_listeners()
 
 
 func _clear_market() -> void:
@@ -36,7 +37,7 @@ func _clear_market() -> void:
 
 func _create_variants(target_config: Configuration) -> void:
 	for i in difficulty:
-		var p = PersonScene.instance()
+		var p = MarketPersonScene.instance()
 		p.mark_as_variant = true
 		add_child(p)
 		p.set_configuration( _get_configuration(i, target_config) )
@@ -99,15 +100,15 @@ func _create_forced_configuration(base_configuration: Configuration, parts_to_ov
 	return c
 
 
-func _fill_market():
+func _fill_market() -> void:
 	var extras_needed = suspects - difficulty
 	
 	for i in extras_needed:
-		var p = PersonScene.instance()
+		var p = MarketPersonScene.instance()
 		add_child(p)
 	
 	
-func _shuffle_market_positions():
+func _shuffle_market_positions() -> void:
 	var index = 0
 	var row = 0
 	
@@ -121,3 +122,18 @@ func _shuffle_market_positions():
 			row += 1
 			
 		index += 1
+
+
+func _add_listeners() -> void:
+	for c in get_children():
+		c.connect('selected', self, '_on_MarketPerson_selected')
+
+
+func _on_MarketPerson_selected() -> void:
+	var selected_configurations = []
+	
+	for c in get_children():
+		if c.is_selected():
+			selected_configurations.append(c.get_configuration())
+
+	print(selected_configurations)
