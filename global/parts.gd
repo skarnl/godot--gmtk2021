@@ -7,3 +7,5 @@ const NOSE = "nose"
 const MOUTH = "mouth"
 const HAIR = "hair"
 
+static func keys() -> Array:
+	return [HEAD, HAIR, EYES, MOUTH, EARS, NOSE]

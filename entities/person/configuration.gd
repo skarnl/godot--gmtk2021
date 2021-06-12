@@ -25,11 +25,7 @@ func _to_string() -> String:
 func _to_dictionary() -> Dictionary:
 	var d = {}
 	
-	for k in keys():
+	for k in PersonParts.keys():
 		d[k] = self[k]
 	
 	return d
-
-
-func keys() -> Array:
-	return [PersonParts.HEAD, PersonParts.HAIR, PersonParts.EYES, PersonParts.MOUTH, PersonParts.EARS, PersonParts.NOSE]
