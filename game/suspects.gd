@@ -20,22 +20,78 @@ var cols = 3
 var cell_size = 200
 
 
-func set_target_configuration(config: Configuration) -> void:
-	print(config)
+func set_target_configuration(target_config: Configuration) -> void:
+	print("target = ", target_config)
 	
-	_create_variants(config)
+	_create_variants(target_config)
+	_fill_market()
 
 
-func _create_variants(config: Configuration):
+func _create_variants(target_config: Configuration):
 	for c in get_children():
 		c.queue_free()
 	
 	for i in difficulty:
 		var p = PersonScene.instance()
 		add_child(p)
-		p.position = Vector2(i * cell_size, 0.0)
+		p.position = Vector2((i % cols) * cell_size, 0.0)
 		
+		p.set_configuration( _get_configuration(i, target_config) )
 		
+
+func _get_configuration( index: int, target_config: Configuration):
+	match difficulty:
+		DIFFICULTY.EASY:
+			match index:
+				0:
+					return _create_forced_configuration(target_config, [PersonParts.NOSE, PersonParts.HAIR])
+				1:
+					return _create_forced_configuration(target_config, [PersonParts.MOUTH])
+				2:
+					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.EARS])
+		
+		DIFFICULTY.MEDIUM:
+			match index:
+				0:
+					return _create_forced_configuration(target_config, [PersonParts.NOSE, PersonParts.MOUTH])
+					
+				1:
+					return _create_forced_configuration(target_config, [PersonParts.MOUTH, PersonParts.EARS])
+					
+				2:
+					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.EARS, PersonParts.HAIR])
+										
+				3:
+					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.HAIR])
+					
+			
+		DIFFICULTY.HARD:
+			match index:
+				0:
+					return _create_forced_configuration(target_config, [PersonParts.NOSE, PersonParts.EARS, PersonParts.MOUTH])
+					
+				1:
+					return _create_forced_configuration(target_config, [PersonParts.EARS, PersonParts.MOUTH, PersonParts.HAIR])
+					
+				2:
+					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.MOUTH, PersonParts.HAIR])
+					
+				3:
+					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.HAIR])
+					
+				4:
+					return _create_forced_configuration(target_config, [PersonParts.EYES, PersonParts.NOSE, PersonParts.EARS])
+					
+	
+func _create_forced_configuration(base_configuration: Configuration, parts_to_overwrite = []) -> Configuration:
+	var c = Helpers.clone(base_configuration)
+	
+	for part in c.keys():
+		if parts_to_overwrite.has(part):
+			c[part] = Helpers.get_random_frame([c[part]])
+		
+	return c
+
 func _fill_market():
 	pass
 	
