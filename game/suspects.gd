@@ -37,6 +37,7 @@ func _clear_market() -> void:
 func _create_variants(target_config: Configuration) -> void:
 	for i in difficulty:
 		var p = PersonScene.instance()
+		p.mark_as_variant = true
 		add_child(p)
 		p.set_configuration( _get_configuration(i, target_config) )
 		

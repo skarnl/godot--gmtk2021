@@ -9,6 +9,9 @@ onready var nose = $Nose
 onready var mouth = $Mouth
 
 
+var mark_as_variant = false
+
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
@@ -60,3 +63,8 @@ func get_configuration() -> Configuration:
 		config[part] = self[part].get_frame_coords().x
 
 	return Configuration.new(config)
+
+
+func _draw() -> void:
+	if OS.is_debug_build() and mark_as_variant:
+		draw_rect(Rect2(Vector2(10.0, 10.0), Vector2(190.00, 190.00)), Color.crimson.lightened(0.4))
