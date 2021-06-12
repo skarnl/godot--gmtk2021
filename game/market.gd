@@ -134,14 +134,10 @@ func _add_listeners() -> void:
 
 
 func _on_MarketPerson_selection_changed() -> void:
-	print('_on_MarketPerson_selection_changed')
-	
 	var selected_configurations = []
 	
 	for c in get_children():
 		if c.is_selected():
 			selected_configurations.append(c.get_configuration())
-
-	print(selected_configurations)
 
 	emit_signal('selection_updated', selected_configurations)
