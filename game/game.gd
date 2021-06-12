@@ -1,11 +1,11 @@
 extends Node2D
 
 
+var target_config
+
+
 onready var target = $Target
 onready var suspects = $Suspects
-
-
-var target_config
 
 
 func _ready():
