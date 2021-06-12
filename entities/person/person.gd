@@ -50,7 +50,13 @@ func set_configuration(config: Configuration, exclude: Dictionary = {}) -> void:
 		var sprite = self[part]
 		
 		if (part in _configuration):
-			sprite.set_frame_coords(Vector2( _configuration[part], sprite.get_frame_coords().y))
+			var value = _configuration[part]
+			
+			if (value != -1):
+				sprite.show()
+				sprite.set_frame_coords(Vector2( value, sprite.get_frame_coords().y))
+			else:
+				sprite.hide()
 
 
 
