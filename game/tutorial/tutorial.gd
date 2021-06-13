@@ -45,22 +45,26 @@ func _initialize() -> void:
 	$ForcedMarket.set_market_configuration([first_configuration, second_configuration, third_configuration])
 	$ForcedMarket.connect('selection_updated', self, '_on_ForcedMarket_selection_updated')
 
+	print($TutorialGuide)
 
+	$TutorialGuide.connect('finished', self, '_on_TutorialGuide_finished')
+	
+	
 
 func _on_ForcedMarket_selection_updated(configurations: Array) -> void:
-	print('Tutorial::_on_Market_selection_updated')
-	
-	if (configurations.has(first_configuration)):
-		print('eerste config aangeklikt')
-		
-	if (configurations.has(second_configuration)):
-		print('tweede config aangeklikt')
-		
-	if (configurations.has(third_configuration)):
-		print('derde config aangeklikt')
-	# toon de mogelijkheden en dat er dus niks gegetoond kan worden als het 'gelijk' is qua score
-	
 	_on_Market_selection_updated(configurations)
+	next_level_button.hide() # not until the tutorial tells us to ^^
+	
+	var combined_configuration := _calculate_combined_configuration(configurations)
+	
+	if combined_configuration.get_hash() == target_config.get_hash():
+		$TutorialGuide.matched()
+	else:
+		$TutorialGuide.selected(combined_configuration, configurations.size())
+	
+
+func _on_TutorialGuide_finished() -> void:
+	next_level_button.show()
 
 
 func _on_NextLevelButton_pressed() -> void:

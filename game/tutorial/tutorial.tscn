@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/tutorial/tutorial.gd" type="Script" id=2]
 [ext_resource path="res://entities/market/forced_market.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/dialog_box.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/tutorial/guide.gd" type="Script" id=5]
+[ext_resource path="res://assets/images/Arrow_m005.png" type="Texture" id=6]
 
 [node name="Tutorial" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -10,15 +13,317 @@ script = ExtResource( 2 )
 [node name="ForcedMarket" parent="." index="4" instance=ExtResource( 3 )]
 position = Vector2( 853, 94.435 )
 
-[node name="Label" type="Label" parent="." index="6"]
-margin_left = 814.281
-margin_top = 149.671
-margin_right = 854.281
-margin_bottom = 163.671
-text = "TUTORIALLLLL"
+[node name="Market" parent="." index="8"]
+visible = false
+
+[node name="TutorialGuide" type="Control" parent="." index="11"]
+margin_right = 1706.0
+margin_bottom = 1280.0
+mouse_filter = 2
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Market" parent="." index="9"]
+[node name="shade" type="ColorRect" parent="TutorialGuide" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.254902, 0.0980392, 0.388235, 0.298039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Intro" parent="TutorialGuide" index="1" instance=ExtResource( 4 )]
 visible = false
+margin_left = 422.405
+margin_top = 430.334
+margin_right = -389.595
+margin_bottom = -640.666
+text = "Welcome to your new job as a profiler.
+
+  [ press a key or click to continue ]"
+
+[node name="Intro7" parent="TutorialGuide" index="2" instance=ExtResource( 4 )]
+visible = false
+margin_left = 422.405
+margin_top = 430.334
+margin_right = -389.595
+margin_bottom = -640.666
+text = "Your task is to find the matching suspects from the targets profile picture."
+
+[node name="Intro3" parent="TutorialGuide" index="3" instance=ExtResource( 4 )]
+visible = false
+margin_left = 145.345
+margin_top = 833.438
+margin_right = -1124.65
+margin_bottom = -283.562
+text = "This is the target you need to match"
+
+[node name="Arrow2" type="Sprite" parent="TutorialGuide/Intro3" index="1"]
+position = Vector2( 454.193, 110.965 )
+rotation = 1.54097
+texture = ExtResource( 6 )
+
+[node name="Intro2" parent="TutorialGuide" index="4" instance=ExtResource( 4 )]
+visible = false
+margin_left = 636.0
+margin_top = 338.0
+margin_right = -506.0
+margin_bottom = -789.0
+text = "These are the suspects you can select"
+
+[node name="Arrow" type="Sprite" parent="TutorialGuide/Intro2" index="1"]
+position = Vector2( 42.3376, -18.128 )
+texture = ExtResource( 6 )
+
+[node name="Intro4" parent="TutorialGuide" index="5" instance=ExtResource( 4 )]
+visible = false
+margin_left = 924.364
+margin_top = 700.109
+margin_right = -190.636
+margin_bottom = -348.891
+text = "Here you see the result of the combined traits of the subjects"
+
+[node name="Arrow3" type="Sprite" parent="TutorialGuide/Intro4" index="1"]
+position = Vector2( 92.1149, 245.295 )
+rotation = 3.14536
+texture = ExtResource( 6 )
+
+[node name="Intro8" parent="TutorialGuide" index="6" instance=ExtResource( 4 )]
+visible = false
+margin_left = 644.709
+margin_top = 700.0
+margin_right = -494.291
+margin_bottom = -349.0
+text = "Now the result picture is still empty, since no suspect is selected yet"
+
+[node name="Arrow3" type="Sprite" parent="TutorialGuide/Intro8" index="1"]
+position = Vector2( 391.644, 247.295 )
+rotation = 3.14536
+texture = ExtResource( 6 )
+
+[node name="Intro5" parent="TutorialGuide" index="7" instance=ExtResource( 4 )]
+visible = false
+margin_left = 1051.33
+margin_top = 652.69
+margin_right = -111.667
+margin_bottom = -400.31
+text = "Here is a quick overview of what traits matches the targets"
+
+[node name="Arrow4" type="Sprite" parent="TutorialGuide/Intro5" index="1"]
+position = Vector2( 321.312, 243.204 )
+rotation = -3.13782
+texture = ExtResource( 6 )
+
+[node name="Intro6" parent="TutorialGuide" index="8" instance=ExtResource( 4 )]
+visible = false
+margin_left = 566.334
+margin_top = 506.525
+margin_right = -506.666
+margin_bottom = -604.475
+text = "Now, let's get started and select one of the suspects"
+
+[node name="SelectedFlow" parent="TutorialGuide" index="9" instance=ExtResource( 4 )]
+visible = false
+margin_left = 478.361
+margin_top = 604.327
+margin_right = -493.639
+margin_bottom = -397.673
+text = "Now that you've selected a subject, you see the result reflects what traits the subject has in common with the target"
+
+[node name="Arrow5" type="Sprite" parent="TutorialGuide/SelectedFlow" index="1"]
+position = Vector2( 580.881, 292.968 )
+rotation = -3.13782
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow3" parent="TutorialGuide" index="10" instance=ExtResource( 4 )]
+visible = false
+margin_left = 568.382
+margin_top = 499.833
+margin_right = -457.618
+margin_bottom = -595.167
+text = "Select a second suspect and see what happens"
+
+[node name="SelectedFlow4" parent="TutorialGuide" index="11" instance=ExtResource( 4 )]
+visible = false
+margin_left = 692.0
+margin_top = 735.0
+margin_right = -563.0
+margin_bottom = -367.0
+text = "Now some traits are hidden. Why?"
+
+[node name="Arrow5" type="Sprite" parent="TutorialGuide/SelectedFlow4" index="1"]
+position = Vector2( 381.804, 195.711 )
+rotation = -3.13782
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow11" parent="TutorialGuide" index="12" instance=ExtResource( 4 )]
+visible = false
+margin_left = 436.0
+margin_top = 485.0
+margin_right = -444.0
+margin_bottom = -572.0
+text = "The profiler doesn't know what trait to pick, since there is no majority selected."
+
+[node name="SelectedFlow5" parent="TutorialGuide" index="13" instance=ExtResource( 4 )]
+visible = false
+margin_left = 509.0
+margin_top = 415.0
+margin_right = -209.0
+margin_bottom = -379.0
+text = "You've selected:"
+
+[node name="Arrow5" type="Sprite" parent="TutorialGuide/SelectedFlow5" index="1"]
+position = Vector2( 480.972, 504.288 )
+rotation = -3.13782
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow6" parent="TutorialGuide" index="14" instance=ExtResource( 4 )]
+visible = false
+margin_left = 525.024
+margin_top = 485.167
+margin_right = -443.976
+margin_bottom = -571.833
+text = "The key is to get a majority of each trait for all selected subjects."
+
+[node name="SelectedFlow7" parent="TutorialGuide" index="15" instance=ExtResource( 4 )]
+visible = false
+margin_left = 436.644
+margin_top = 508.31
+margin_right = -447.356
+margin_bottom = -600.69
+text = "Please select the third suspect and see if we can get a majority"
+
+[node name="SelectedFlow9" parent="TutorialGuide" index="16" instance=ExtResource( 4 )]
+visible = false
+margin_left = 604.752
+margin_top = 554.132
+margin_right = -581.248
+margin_bottom = -625.868
+text = "Yes, we have a match!"
+
+[node name="SelectedFlow13" parent="TutorialGuide" index="17" instance=ExtResource( 4 )]
+visible = false
+margin_left = 411.88
+margin_top = 439.353
+margin_right = -443.12
+margin_bottom = -625.647
+text = "2 of our suspects have the same hair as our target"
+
+[node name="Arrow6" type="Sprite" parent="TutorialGuide/SelectedFlow13" index="1"]
+position = Vector2( 416.63, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="Arrow7" type="Sprite" parent="TutorialGuide/SelectedFlow13" index="2"]
+position = Vector2( 676.646, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow14" parent="TutorialGuide" index="18" instance=ExtResource( 4 )]
+visible = false
+margin_left = 411.88
+margin_top = 435.159
+margin_right = -443.12
+margin_bottom = -629.841
+text = "2 of our suspects have the same eyes as our target"
+
+[node name="Arrow6" type="Sprite" parent="TutorialGuide/SelectedFlow14" index="1"]
+position = Vector2( 217.424, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="Arrow7" type="Sprite" parent="TutorialGuide/SelectedFlow14" index="2"]
+position = Vector2( 676.646, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow15" parent="TutorialGuide" index="19" instance=ExtResource( 4 )]
+margin_left = 411.88
+margin_top = 422.577
+margin_right = -443.12
+margin_bottom = -642.423
+text = "2 of our suspects have the same nose as our target"
+
+[node name="Arrow6" type="Sprite" parent="TutorialGuide/SelectedFlow15" index="1"]
+position = Vector2( 217.424, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="Arrow7" type="Sprite" parent="TutorialGuide/SelectedFlow15" index="2"]
+position = Vector2( 425.018, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow16" parent="TutorialGuide" index="20" instance=ExtResource( 4 )]
+visible = false
+margin_left = 437.043
+margin_top = 386.93
+margin_right = -417.957
+margin_bottom = -678.07
+text = "2 of our suspects have the same mouth as our target"
+
+[node name="Arrow6" type="Sprite" parent="TutorialGuide/SelectedFlow16" index="1"]
+position = Vector2( 129.354, -12.8373 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="Arrow7" type="Sprite" parent="TutorialGuide/SelectedFlow16" index="2"]
+position = Vector2( 676.646, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow17" parent="TutorialGuide" index="21" instance=ExtResource( 4 )]
+margin_left = 411.88
+margin_top = 414.19
+margin_right = -443.12
+margin_bottom = -650.81
+text = "All the suspects have the same ears as our target"
+
+[node name="Arrow6" type="Sprite" parent="TutorialGuide/SelectedFlow17" index="1"]
+position = Vector2( 217.424, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="Arrow8" type="Sprite" parent="TutorialGuide/SelectedFlow17" index="2"]
+position = Vector2( 425.018, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="Arrow7" type="Sprite" parent="TutorialGuide/SelectedFlow17" index="3"]
+position = Vector2( 676.646, -17.0311 )
+rotation = -0.0190811
+texture = ExtResource( 6 )
+
+[node name="SelectedFlow10" parent="TutorialGuide" index="22" instance=ExtResource( 4 )]
+visible = false
+margin_left = 421.678
+margin_top = 426.647
+margin_right = -427.322
+margin_bottom = -584.353
+text = "That's it.
+
+Looks like you are ready for the real work."
+
+[node name="SelectedFlow18" parent="TutorialGuide" index="23" instance=ExtResource( 4 )]
+visible = false
+margin_left = 402.806
+margin_top = 493.748
+margin_right = -446.194
+margin_bottom = -607.252
+text = "And don't forget: always get a majority for each trait!"
+
+[node name="SelectedFlow12" parent="TutorialGuide" index="24" instance=ExtResource( 4 )]
+visible = false
+margin_left = 811.311
+margin_top = 435.194
+margin_right = -133.689
+margin_bottom = -615.806
+text = "Click on [Continue] to proceed.
+
+Good luck and have fun!"
+
+[node name="Arrow6" type="Sprite" parent="TutorialGuide/SelectedFlow12" index="1"]
+position = Vector2( 679.821, 242.95 )
+rotation = -3.13782
+texture = ExtResource( 6 )

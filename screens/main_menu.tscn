@@ -56,6 +56,7 @@ by joining suspects together.
 Don't worry, we will explain how it works."
 align = 1
 autowrap = true
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
