@@ -1,14 +1,22 @@
 extends "res://entities/person/person.gd"
 
-var mark_as_success := false setget _set_mark_as_success
+var _target_configuration:Configuration
 
-
-func _draw() -> void:
-	if mark_as_success:
-		draw_rect(Rect2(Vector2(10.0, 10.0), Vector2(190.00, 190.00)), Color.green.lightened(0.2))
-
-
-func _set_mark_as_success(new_value):
-	mark_as_success = new_value
+func set_configuration( target_configuration: Configuration ) -> void:
+	_target_configuration = target_configuration
 	
-	update()
+	.set_configuration(target_configuration)
+
+
+func set_updated_configuration( configuration: Configuration ) -> void:
+	for part in PersonParts.keys():
+		var sprite = self[part]
+		
+		if does_part_matches_target_part(configuration, part):
+			sprite.show()
+		else:
+			sprite.hide()
+
+
+func does_part_matches_target_part(configuration: Configuration, part: String) -> bool:
+	return configuration[part] == _target_configuration[part]

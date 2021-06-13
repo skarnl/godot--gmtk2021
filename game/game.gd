@@ -23,6 +23,7 @@ func _on_ready():
 #	get target configuration
 	target_config = target.get_configuration()
 	
+	result.set_configuration( target_config )
 	result_preview.set_configuration(target_config)
 
 	market.set_target_configuration(target_config)
@@ -44,7 +45,9 @@ func _on_Market_selection_updated(configurations: Array) -> void:
 		
 		var combined_configuration := _calculate_combined_configuration(configurations)
 		
-		result.set_configuration( combined_configuration )
+		print(combined_configuration)
+		
+		result.set_updated_configuration( combined_configuration )
 		result_preview.set_updated_configuration( combined_configuration )
 		
 		if combined_configuration.get_hash() == target_config.get_hash():

@@ -41,6 +41,7 @@ func _on_ready():
 		PersonParts.MOUTH: 0
 	})
 	target.set_configuration(target_config)
+	result.set_configuration( target_config )
 	result_preview.set_configuration(target_config)
 
 	$ForcedMarket.set_market_configuration([first_configuration, second_configuration, third_configuration])

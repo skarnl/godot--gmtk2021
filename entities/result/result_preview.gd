@@ -4,7 +4,7 @@ func set_updated_configuration( configuration: Configuration ) -> void:
 	for part in PersonParts.keys():
 		var sprite = self[part]
 		
-		if configuration[part] == -1:
+		if not does_part_matches_target_part(configuration, part):
 			sprite.show()
 		else:
 			sprite.hide()
