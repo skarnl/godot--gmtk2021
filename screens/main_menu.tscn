@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://screens/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Title_m005.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/StartButton_m005.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/StartButtonHover_m005.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/main_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://entities/market/market_person.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "type"
@@ -32,6 +33,61 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 0, -284.628 )
+
+[node name="MarketPerson" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 150.94, 788.58 )
+
+[node name="MarketPerson2" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1212.22, 817.265 )
+
+[node name="MarketPerson3" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1472.59, 497.333 )
+
+[node name="MarketPerson4" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 148.733, 543.668 )
+
+[node name="MarketPerson5" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -102.799, 808.439 )
+
+[node name="MarketPerson7" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1485.82, 740.039 )
+
+[node name="MarketPerson10" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -107.212, 572.352 )
+
+[node name="MarketPerson15" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1223.26, 554.701 )
+
+[node name="MarketPerson26" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1472.59, 951.856 )
+
+[node name="MarketPerson28" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1503.47, 1205.6 )
+
+[node name="MarketPerson19" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1218.85, 1073.2 )
+
+[node name="MarketPerson20" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1503.48, 1452.72 )
+
+[node name="MarketPerson21" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 278.912, 1273.99 )
+
+[node name="MarketPerson22" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1227.67, 1329.15 )
+
+[node name="MarketPerson23" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 186.242, 1035.7 )
+
+[node name="MarketPerson24" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -63.083, 1037.91 )
+
+[node name="MarketPerson25" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 18.5546, 1285.02 )
 
 [node name="TitleSprite" type="Sprite" parent="."]
 position = Vector2( 881.078, 186.236 )
@@ -70,10 +126,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -5.0
-margin_top = 290.0
-margin_right = 294.0
-margin_bottom = 413.0
+margin_left = -124.147
+margin_top = 376.05
+margin_right = 174.853
+margin_bottom = 499.05
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
