@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/market/market.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/game.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/images/TargetPolaroid.png" type="Texture" id=7]
 [ext_resource path="res://entities/result/summary.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/result/result_preview.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/images/MatchMessage_m005.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ContinueButton_m005.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ContinueButtonHover_m005.png" type="Texture" id=12]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -42,54 +45,20 @@ position = Vector2( 582.157, 935.047 )
 [node name="Market" parent="." instance=ExtResource( 1 )]
 position = Vector2( 853, 94.435 )
 
-[node name="Control" type="Control" parent="."]
+[node name="MatchMessage" type="Sprite" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 1022.85, 835.084 )
+texture = ExtResource( 10 )
 
-[node name="Label" type="Label" parent="Control"]
-margin_left = 1496.71
-margin_top = 358.141
-margin_right = 1544.71
-margin_bottom = 372.141
-rect_scale = Vector2( 2.77392, 2.57994 )
-text = "TARGET"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="Control"]
-margin_left = 1519.87
-margin_top = 1017.41
-margin_right = 1567.87
-margin_bottom = 1031.41
-rect_scale = Vector2( 2.77392, 2.57994 )
-text = "RESULT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Control"]
-margin_left = 356.359
-margin_top = 21.3815
-margin_right = 417.359
-margin_bottom = 35.3815
-rect_scale = Vector2( 2.77392, 2.57994 )
-text = "SUSPECTS"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NextLevelButton" type="Button" parent="."]
-margin_left = 1507.4
-margin_top = 1138.57
-margin_right = 1519.4
-margin_bottom = 1158.57
-text = "NEXT LEVEL >"
+[node name="NextLevelButton" type="TextureButton" parent="."]
+anchor_right = 0.551
+margin_left = 1337.52
+margin_top = 703.445
+margin_right = 1690.52
+margin_bottom = 870.445
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

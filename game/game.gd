@@ -18,6 +18,7 @@ func _ready():
 func _on_ready():
 	result.hide()
 	next_level_button.hide()
+	$MatchMessage.hide()
 	
 #	get target configuration
 	target_config = target.get_configuration()
@@ -46,13 +47,12 @@ func _on_Market_selection_updated(configurations: Array) -> void:
 		result.set_configuration( combined_configuration )
 		result_preview.set_updated_configuration( combined_configuration )
 		
-		# TEMP DEBUG
-		result.mark_as_success = combined_configuration.get_hash() == target_config.get_hash()
-		
-		if result.mark_as_success:
+		if combined_configuration.get_hash() == target_config.get_hash():
 			next_level_button.show()
+			$MatchMessage.show()
 		else:
 			next_level_button.hide()
+			$MatchMessage.hide()
 			
 		summary.update_summary(combined_configuration, target_config)
 

@@ -29,6 +29,7 @@ var third_configuration: Configuration = Configuration.new({
 
 func _on_ready():
 	result.hide()
+	$MatchMessage.hide()
 	
 	# head, hair, eyes, ears, nose, mouth
 	target_config = Configuration.new({
