@@ -7,10 +7,8 @@
 [node name="Tutorial" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Market" parent="." index="3"]
-visible = false
-
 [node name="ForcedMarket" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 853, 94.435 )
 
 [node name="Label" type="Label" parent="." index="6"]
 margin_left = 814.281
@@ -21,3 +19,6 @@ text = "TUTORIALLLLL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Market" parent="." index="8"]
+visible = false

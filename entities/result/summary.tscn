@@ -8,13 +8,13 @@
 script = ExtResource( 3 )
 
 [node name="HairMissing" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 25, 49, 273, 86 )
 
 [node name="HairMatching" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
@@ -28,6 +28,7 @@ region_enabled = true
 region_rect = Rect2( 47, 131, 228, 61 )
 
 [node name="EyesMatching" type="Sprite" parent="."]
+visible = false
 position = Vector2( 17.461, 76.339 )
 texture = ExtResource( 2 )
 centered = false

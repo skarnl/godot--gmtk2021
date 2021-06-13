@@ -144,9 +144,10 @@ func _shuffle_market_positions() -> void:
 
 func _position_in_grid(children: Array) -> void:
 	var index = 0
+	var offset = cols * cell_size / 2
 	
 	for c in children:
-		c.position = Vector2(index % cols * cell_size, index / cols * cell_size)
+		c.position = Vector2((index % cols * cell_size) - offset, index / cols * cell_size)
 		
 		index += 1
 
