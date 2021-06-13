@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const VARIANTS = 4
+const VARIANTS = 12
 
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
