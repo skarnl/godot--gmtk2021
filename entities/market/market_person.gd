@@ -15,6 +15,10 @@ var mark_as_variant := false
 var _debug := false
 
 
+func _ready() -> void:
+	$MarketPolaroid.rotation_degrees = rand_range(-3, 3)
+
+
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton and event.pressed):
 		_selected = !_selected

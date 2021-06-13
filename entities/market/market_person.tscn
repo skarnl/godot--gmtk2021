@@ -12,8 +12,8 @@ extents = Vector2( 128, 130 )
 script = ExtResource( 2 )
 
 [node name="MarketPolaroid" type="Sprite" parent="."]
+position = Vector2( 132, 134 )
 texture = ExtResource( 3 )
-centered = false
 
 [node name="Person" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30.2905, 37.2906 )

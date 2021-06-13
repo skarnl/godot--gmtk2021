@@ -24,6 +24,7 @@ __meta__ = {
 
 [node name="ResultPolaroid" type="Sprite" parent="."]
 position = Vector2( 1023.2, 1054.34 )
+rotation = 0.0310006
 texture = ExtResource( 6 )
 
 [node name="ResultPreview" parent="." instance=ExtResource( 9 )]
@@ -37,6 +38,7 @@ position = Vector2( 1217.95, 902.42 )
 
 [node name="TargetPolaroid" type="Sprite" parent="."]
 position = Vector2( 680.855, 1055.93 )
+rotation = -0.0370828
 texture = ExtResource( 7 )
 
 [node name="Target" parent="." instance=ExtResource( 5 )]
