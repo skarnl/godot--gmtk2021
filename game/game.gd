@@ -2,6 +2,7 @@ extends Node2D
 
 
 var target_config
+var tries := 0
 
 
 onready var target := $Target
@@ -10,6 +11,9 @@ onready var result_preview := $ResultPreview
 onready var market := $Market
 onready var next_level_button := $NextLevelButton
 onready var summary := $Summary
+
+onready var hud := $HUD
+
 
 func _ready():
 	_on_ready()
@@ -36,13 +40,11 @@ func _initialize() -> void:
 	market.set_target_configuration(target_config)
 	market.connect('selection_updated', self, '_on_Market_selection_updated')
 
-#   bereken elke keer het eindresultaat
-#   toon het eindresultaat direct
-
-#    -> dit wordt later pas gedaan ON CLICK van de process-knop
-
 
 func _on_Market_selection_updated(configurations: Array) -> void:
+	tries += 1
+	hud.update_tries(tries)
+	
 	if configurations.size() == 0:
 		result.hide()
 		summary.update_summary(Configuration.new(), target_config)
