@@ -71,9 +71,6 @@ func _next_step() -> void:
 	
 	current_step += 1
 	
-	print('current_step', current_step)
-	print('condition = ', _get_current_condition())
-	
 	# hide the previous
 	if (current_step > 1):
 		get_child(current_step - 1).hide()
@@ -126,8 +123,6 @@ func _make_text_from_configuration_differences() -> String:
 		
 	
 func selected(combined_configuration: Configuration, selected_count: int) -> void:
-	print('selected')
-	
 	if _get_current_condition() != SELECTED and _get_current_condition() != SELECTED2:
 		return
 	
