@@ -30,6 +30,6 @@ jobs:
         godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_linux_headless.64.zip
         godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
         relative_project_path: ${{ env.GAME_PATH }}
-        base_version: 0.1.0
+        base_version: 1.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.EXPORT_GITHUB_TOKEN }}
