@@ -1,9 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://screens/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Title_m005.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/StartButton_m005.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/StartButtonHover_m005.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/main_font.tres" type="DynamicFont" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "type"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Introduction:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="MainMenu" type="Control"]
 pause_mode = 2
@@ -20,15 +37,32 @@ __meta__ = {
 position = Vector2( 881.078, 186.236 )
 texture = ExtResource( 2 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 611.0
-margin_top = 420.0
-margin_right = 1275.0
-margin_bottom = 747.0
-text = "Welcome to the Profiles"
+[node name="Introduction" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -434.0
+margin_top = -226.5
+margin_right = 434.0
+margin_bottom = 226.5
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Welcome!
+
+Your job is to identify the target,
+by joining suspects together.
+
+Don't worry, we will explain how it works."
+align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.9
+anims/type = SubResource( 1 )
 
 [node name="StartButton" type="TextureButton" parent="."]
 anchor_left = 0.5

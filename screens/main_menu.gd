@@ -8,6 +8,7 @@ func _ready():
 	show()
 	
 	BackgroundMusic.start()
+	$AnimationPlayer.play('type')
 
 
 func _on_StartButton_pressed() -> void:
