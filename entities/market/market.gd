@@ -155,10 +155,19 @@ func _position_in_grid(children: Array) -> void:
 	else:
 		cols = 4
 		
-	var offset = cols * cell_size / 2
+	var x_offset = cols * cell_size / 2
+	var y_offset = 0
+	
+	var rows = market_size / cols
+		
+	if Level.level > 0:
+		if rows == 1 or rows == 2:
+			y_offset = cell_size / 2
+		elif rows > 2:
+			y_offset = -60
 	
 	for c in children:
-		c.position = Vector2((index % cols * cell_size) - offset, index / cols * cell_size)
+		c.position = Vector2((index % cols * cell_size) - x_offset, index / cols * cell_size + y_offset)
 		
 		index += 1
 
