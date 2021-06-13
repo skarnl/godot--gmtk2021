@@ -12,27 +12,33 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 896.582 ]
+"_edit_horizontal_guides_": [ 896.582 ],
+"_edit_vertical_guides_": [ 242.266, 1464.95 ]
 }
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="ResultPolaroid" type="Sprite" parent="."]
-position = Vector2( 418.964, 1055.92 )
+position = Vector2( 1335.58, 1054.34 )
 texture = ExtResource( 6 )
 
+[node name="ResultPreview" parent="." instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0.247059 )
+position = Vector2( 1236.65, 930.79 )
+
 [node name="Result" parent="." instance=ExtResource( 4 )]
-position = Vector2( 320.028, 925.367 )
+visible = false
+position = Vector2( 1236.65, 930.79 )
 
 [node name="Summary" parent="." instance=ExtResource( 8 )]
-position = Vector2( 779.362, 929.24 )
+position = Vector2( 861.4, 902.42 )
 
 [node name="TargetPolaroid" type="Sprite" parent="."]
-position = Vector2( 1375.02, 1054.35 )
+position = Vector2( 371.634, 1055.93 )
 texture = ExtResource( 7 )
 
 [node name="Target" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1277.9, 922.314 )
+position = Vector2( 272.936, 935.047 )
 
 [node name="Market" parent="." instance=ExtResource( 1 )]
 position = Vector2( 853, 94.435 )

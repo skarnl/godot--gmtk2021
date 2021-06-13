@@ -6,6 +6,7 @@ var target_config
 
 onready var target := $Target
 onready var result := $Result
+onready var result_preview := $ResultPreview
 onready var market := $Market
 onready var next_level_button := $NextLevelButton
 onready var summary := $Summary
@@ -20,6 +21,8 @@ func _on_ready():
 	
 #	get target configuration
 	target_config = target.get_configuration()
+	
+	result_preview.set_configuration(target_config)
 
 	market.set_target_configuration(target_config)
 	market.connect('selection_updated', self, '_on_Market_selection_updated')

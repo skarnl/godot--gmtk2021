@@ -16,7 +16,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="Person" parent="." instance=ExtResource( 1 )]
-position = Vector2( 30.2905, 30.2906 )
+position = Vector2( 30.2905, 37.2906 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
