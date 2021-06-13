@@ -1,51 +1,49 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://screens/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/Title_m005.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/StartButton_m005.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/StartButtonHover_m005.png" type="Texture" id=4]
 
 [node name="MainMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.17493
+margin_right = 2.17493
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.419608, 0.596078, 0.929412, 0.407843 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="TitleSprite" type="Sprite" parent="."]
+position = Vector2( 881.078, 186.236 )
+texture = ExtResource( 2 )
 
-[node name="Button" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -49.0
-margin_top = -387.887
-margin_right = 49.0
-margin_bottom = -343.887
-text = "start"
-flat = true
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 611.0
+margin_top = 420.0
+margin_right = 1275.0
+margin_bottom = 747.0
+text = "Welcome to the Profiles"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="StartButton" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -36.5
-margin_top = -235.07
-margin_right = 36.5
-margin_bottom = -221.07
-text = "main menu"
+margin_left = -5.0
+margin_top = 290.0
+margin_right = 294.0
+margin_bottom = 413.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
-[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
