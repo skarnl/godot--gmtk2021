@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/images/TextMissing.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/TextMatching.png" type="Texture" id=2]
+[ext_resource path="res://entities/result/summary.gd" type="Script" id=3]
+
+[node name="Summary" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="HairMissing" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 25, 49, 273, 86 )
+
+[node name="HairMatching" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 25, 49, 273, 78.7123 )
+
+[node name="EyesMissing" type="Sprite" parent="."]
+position = Vector2( 17.4614, 81.7512 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 131, 228, 61 )
+
+[node name="EyesMatching" type="Sprite" parent="."]
+position = Vector2( 17.461, 76.339 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 125.745, 131.7, 69.8084 )
+
+[node name="EyesMatchingCheck" type="Sprite" parent="EyesMatching"]
+position = Vector2( 158.74, 0.793686 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 183.29, 125.745, 45.8361, 52.1042 )
+
+[node name="NoseMissing" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.4614, 143.66 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 189, 228, 54 )
+
+[node name="NoseMatching" type="Sprite" parent="."]
+position = Vector2( 17.4614, 143.66 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 191.784, 155.306, 51.2162 )
+
+[node name="NoseMatchingCheck" type="Sprite" parent="NoseMatching"]
+position = Vector2( 171.439, -10.3181 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208.208, 172.768, 60.981, 53.1125 )
+
+[node name="MouthMissing" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.4614, 192.076 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 242, 244, 54 )
+
+[node name="MouthMatching" type="Sprite" parent="."]
+position = Vector2( 17.4614, 192.076 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 242, 244, 54 )
+
+[node name="EarsMissing" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.4614, 246.841 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 294, 244, 62 )
+
+[node name="EarsMatching" type="Sprite" parent="."]
+position = Vector2( 17.4614, 246.841 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 47, 294, 134.979, 62 )
+
+[node name="EarsMatchingCheck" type="Sprite" parent="EarsMatching"]
+position = Vector2( 177.789, -1.5874 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 189.192, 294, 39.9983, 62 )

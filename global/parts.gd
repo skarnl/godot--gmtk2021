@@ -8,4 +8,4 @@ const MOUTH = "mouth"
 const HAIR = "hair"
 
 static func keys() -> Array:
-	return [HEAD, HAIR, EYES, MOUTH, EARS, NOSE]
+	return [HAIR, EYES, MOUTH, EARS, NOSE]

@@ -8,6 +8,7 @@ onready var target := $Target
 onready var result := $Result
 onready var market := $Market
 onready var next_level_button := $NextLevelButton
+onready var summary := $Summary
 
 func _ready():
 	_on_ready()
@@ -32,6 +33,7 @@ func _on_ready():
 func _on_Market_selection_updated(configurations: Array) -> void:
 	if configurations.size() == 0:
 		result.hide()
+		summary.update_summary(Configuration.new(), target_config)
 	else:
 		result.show()
 		
@@ -46,6 +48,8 @@ func _on_Market_selection_updated(configurations: Array) -> void:
 			next_level_button.show()
 		else:
 			next_level_button.hide()
+			
+		summary.update_summary(combined_configuration, target_config)
 
 func _calculate_combined_configuration(configurations: Array) -> Configuration:
 	var merged_configuration = Configuration.new()

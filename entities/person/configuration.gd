@@ -5,11 +5,11 @@ const VARIANTS = 4
 
 
 var head: int = 0
-var hair: int
-var eyes: int
-var mouth: int
-var ears: int
-var nose: int
+var hair: int = -1
+var eyes: int = -1
+var mouth: int = -1
+var ears: int = -1
+var nose: int = -1
 
 
 func _init(initial_config: Dictionary = {}) -> void:
