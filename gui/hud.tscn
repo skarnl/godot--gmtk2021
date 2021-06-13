@@ -1,6 +1,10 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/main_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/hud.gd" type="Script" id=2]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
@@ -10,13 +14,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUD"]
-visible = false
-margin_left = 12.0
-margin_top = 9.0
-margin_right = 68.0
-margin_bottom = 23.0
-text = "textlabel"
+[node name="LevelLabel" type="Label" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 23.1633
+margin_top = -135.963
+margin_right = 380.163
+margin_bottom = -81.9626
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Level : tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TriesLabel" type="Label" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 23.1633
+margin_top = -75.3816
+margin_right = 380.163
+margin_bottom = -21.3816
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tries : 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }

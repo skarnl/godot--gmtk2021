@@ -68,4 +68,5 @@ func _on_TutorialGuide_finished() -> void:
 
 
 func _on_NextLevelButton_pressed() -> void:
+	Level.increase()
 	Game.goto_next_level()

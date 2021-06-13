@@ -36,6 +36,7 @@ SceneLoader="*res://global/scene_loader.gd"
 Game="*res://global/game_manager.gd"
 Helpers="*res://utils/helpers.gd"
 BackgroundMusic="*res://global/background_music.tscn"
+Level="*res://global/level.gd"
 
 [display]
 

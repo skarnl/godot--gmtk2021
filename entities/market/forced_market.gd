@@ -1,11 +1,5 @@
 extends "res://entities/market/market.gd"
 
-export(Array) var market_persons = []
-
-func _ready() -> void:
-	market_size = market_persons.size()
-
-
 func set_market_configuration(configurations: Array) -> void:
 	_clear_market()
 	
@@ -16,3 +10,7 @@ func set_market_configuration(configurations: Array) -> void:
 	
 	_position_in_grid(get_children())
 	_add_listeners()
+
+
+func _calculate_market_size() -> int:
+	return get_child_count()

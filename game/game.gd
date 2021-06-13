@@ -110,7 +110,6 @@ func _get_counts_per_part(part: String, configurations: Array) -> Dictionary:
 
 
 func _on_NextLevelButton_pressed() -> void:
-	# increase level-counter
-	# so we can increase difficulty / market-size etc
-	
+	Level.increase()
 	Game._restart()
+

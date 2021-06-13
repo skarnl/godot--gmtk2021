@@ -14,12 +14,13 @@ enum DIFFICULTY { EASY = 3, MEDIUM = 4, HARD = 5} # 5 is de max nu, totdat we me
 const MarketPersonScene = preload('res://entities/market/market_person.tscn')
 
 
-export (DIFFICULTY) var difficulty = DIFFICULTY.EASY
-export (int) var market_size = 6
+var difficulty
 
-
-var cols = 3
 var cell_size = 280
+
+
+func _ready() -> void:
+	difficulty = _calculate_difficulty()
 
 
 func set_target_configuration(target_config: Configuration) -> void:
@@ -128,7 +129,7 @@ func _create_guided_configuration(base_configuration: Configuration, parts_to_ov
 
 
 func _fill_market() -> void:
-	var extras_needed = market_size - difficulty
+	var extras_needed = _calculate_market_size() - difficulty
 	
 	for i in extras_needed:
 		var p = MarketPersonScene.instance()
@@ -144,6 +145,16 @@ func _shuffle_market_positions() -> void:
 
 func _position_in_grid(children: Array) -> void:
 	var index = 0
+	var cols
+	var market_size = _calculate_market_size()
+	
+	if market_size <= 5:
+		cols = market_size
+	elif market_size < 10:
+		cols = 3
+	else:
+		cols = 4
+		
 	var offset = cols * cell_size / 2
 	
 	for c in children:
@@ -167,3 +178,26 @@ func _on_MarketPerson_selection_changed() -> void:
 			selected_configurations.append(c.get_configuration())
 
 	emit_signal('selection_updated', selected_configurations)
+
+
+func _calculate_market_size() -> int:
+	match Level.level:
+		1, 2:
+			return 4
+		3, 4:
+			return 5
+		5,6:
+			return 6
+		7,8:
+			return 9
+		_:
+			return 12
+
+func _calculate_difficulty() -> int:
+	if Level.level < 4:
+		return DIFFICULTY.EASY
+	
+	if Level.level < 7:
+		return DIFFICULTY.MEDIUM
+	
+	return DIFFICULTY.HARD
