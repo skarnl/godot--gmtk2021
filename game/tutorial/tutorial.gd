@@ -28,6 +28,9 @@ var third_configuration: Configuration = Configuration.new({
 		})
 
 
+var finished := false
+
+
 func _initialize() -> void:
 	# head, hair, eyes, ears, nose, mouth
 	target_config = Configuration.new({
@@ -45,15 +48,18 @@ func _initialize() -> void:
 	$ForcedMarket.set_market_configuration([first_configuration, second_configuration, third_configuration])
 	$ForcedMarket.connect('selection_updated', self, '_on_ForcedMarket_selection_updated')
 
-	print($TutorialGuide)
-
 	$TutorialGuide.connect('finished', self, '_on_TutorialGuide_finished')
 	
 	
 
 func _on_ForcedMarket_selection_updated(configurations: Array) -> void:
 	_on_Market_selection_updated(configurations)
-	next_level_button.hide() # not until the tutorial tells us to ^^
+	
+	if finished:
+		return
+		
+	 # not until the tutorial tells us to ^^
+	next_level_button.hide()
 	
 	var combined_configuration := _calculate_combined_configuration(configurations)
 	
@@ -64,6 +70,7 @@ func _on_ForcedMarket_selection_updated(configurations: Array) -> void:
 	
 
 func _on_TutorialGuide_finished() -> void:
+	finished = true
 	next_level_button.show()
 
 
