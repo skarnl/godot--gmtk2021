@@ -19,7 +19,7 @@ export (int) var market_size = 6
 
 
 var cols = 3
-var cell_size = 200
+var cell_size = 280
 
 
 func set_target_configuration(target_config: Configuration) -> void:

@@ -6,6 +6,7 @@ signal deselected
 
 
 onready var person := $Person
+onready var selected := $Selected
 
 
 var _selected := false
@@ -38,10 +39,13 @@ func _input(event: InputEvent) -> void:
 
 
 func _update_selected_render() -> void:
-#	TODO render hier iets om aan te geven dat het geselecteerd is of niet
-	update()
-	pass
+	if _selected:
+		selected.select()
+	else:
+		selected.deselect()
 
+	# TEMP
+	update()
 
 func _draw() -> void:
 	if OS.is_debug_build() and mark_as_variant and _debug:

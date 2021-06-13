@@ -38,9 +38,9 @@ Helpers="*res://utils/helpers.gd"
 
 [display]
 
-window/size/width=1920
+window/size/width=1706
 window/size/height=1280
-window/size/test_width=960
+window/size/test_width=853
 window/size/test_height=640
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -66,5 +66,6 @@ debug_toggle={
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"
 quality/2d/use_pixel_snap=true
