@@ -35,6 +35,7 @@ config/icon="res://assets/images/icon.png"
 SceneLoader="*res://global/scene_loader.gd"
 Game="*res://global/game_manager.gd"
 Helpers="*res://utils/helpers.gd"
+BackgroundMusic="*res://global/background_music.tscn"
 
 [display]
 

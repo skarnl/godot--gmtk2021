@@ -6,6 +6,8 @@ signal start_game
 func _ready():
 	$StartButton.grab_focus()
 	show()
+	
+	BackgroundMusic.start()
 
 
 func _on_StartButton_pressed() -> void:
