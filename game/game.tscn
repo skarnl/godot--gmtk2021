@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://entities/market/market.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/game.gd" type="Script" id=2]
@@ -8,37 +8,36 @@
 [ext_resource path="res://assets/images/ResultPolaroid.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/TargetPolaroid.png" type="Texture" id=7]
 [ext_resource path="res://entities/result/summary.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/result/result_preview.tscn" type="PackedScene" id=9]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 896.582 ],
-"_edit_vertical_guides_": [ 242.266, 1464.95 ]
+"_edit_vertical_guides_": [ 242.266, 1464.95, 852.82 ]
 }
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="ResultPolaroid" type="Sprite" parent="."]
-position = Vector2( 1335.58, 1054.34 )
+position = Vector2( 1023.2, 1054.34 )
 texture = ExtResource( 6 )
 
-[node name="ResultPreview" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0.247059 )
-position = Vector2( 1236.65, 930.79 )
+[node name="ResultPreview" parent="." instance=ExtResource( 9 )]
+position = Vector2( 924.274, 930.79 )
 
 [node name="Result" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 1236.65, 930.79 )
+position = Vector2( 924.274, 930.79 )
 
 [node name="Summary" parent="." instance=ExtResource( 8 )]
-position = Vector2( 861.4, 902.42 )
+position = Vector2( 1217.95, 902.42 )
 
 [node name="TargetPolaroid" type="Sprite" parent="."]
-position = Vector2( 371.634, 1055.93 )
+position = Vector2( 680.855, 1055.93 )
 texture = ExtResource( 7 )
 
 [node name="Target" parent="." instance=ExtResource( 5 )]
-position = Vector2( 272.936, 935.047 )
+position = Vector2( 582.157, 935.047 )
 
 [node name="Market" parent="." instance=ExtResource( 1 )]
 position = Vector2( 853, 94.435 )

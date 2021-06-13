@@ -37,12 +37,14 @@ func _on_Market_selection_updated(configurations: Array) -> void:
 	if configurations.size() == 0:
 		result.hide()
 		summary.update_summary(Configuration.new(), target_config)
+		result_preview.reset()
 	else:
 		result.show()
 		
 		var combined_configuration := _calculate_combined_configuration(configurations)
 		
 		result.set_configuration( combined_configuration )
+		result_preview.set_updated_configuration( combined_configuration )
 		
 		# TEMP DEBUG
 		result.mark_as_success = combined_configuration.get_hash() == target_config.get_hash()

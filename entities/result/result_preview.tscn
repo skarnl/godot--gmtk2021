@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/result/result.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/result/result_preview.gd" type="Script" id=2]
+
+[node name="ResultPreview" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( -5.34521, 14.2543 )
+script = ExtResource( 2 )

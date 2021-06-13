@@ -43,7 +43,7 @@ func _correct_frame_numbers() -> void:
 		vframe += 1.0
 		
 
-func set_configuration(config: Configuration, exclude: Dictionary = {}) -> void:
+func set_configuration(config: Configuration) -> void:
 	_configuration = config
 	
 	for part in PARTS:
@@ -52,7 +52,7 @@ func set_configuration(config: Configuration, exclude: Dictionary = {}) -> void:
 		if (part in _configuration):
 			var value = _configuration[part]
 			
-			if (value != -1):
+			if (value >= 0):
 				sprite.show()
 				sprite.set_frame_coords(Vector2( value, sprite.get_frame_coords().y))
 			else:
