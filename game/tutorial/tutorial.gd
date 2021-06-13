@@ -27,10 +27,8 @@ var third_configuration: Configuration = Configuration.new({
 			PersonParts.MOUTH: 0
 		})
 
-func _on_ready():
-	result.hide()
-	$MatchMessage.hide()
-	
+
+func _initialize() -> void:
 	# head, hair, eyes, ears, nose, mouth
 	target_config = Configuration.new({
 		PersonParts.HEAD: 0,

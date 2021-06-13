@@ -32,7 +32,7 @@ func _ready():
 	
 	
 func start_game():
-	transition_to(GameState.GAME)
+	transition_to(GameState.GAME)	
 	
 	
 func goto_next_level():

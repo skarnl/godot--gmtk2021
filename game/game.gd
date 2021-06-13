@@ -16,10 +16,17 @@ func _ready():
 	
 	
 func _on_ready():
+	_hide_stuff()
+	_initialize()
+	
+	
+func _hide_stuff() -> void:
 	result.hide()
 	next_level_button.hide()
 	$MatchMessage.hide()
+
 	
+func _initialize() -> void:
 #	get target configuration
 	target_config = target.get_configuration()
 	
