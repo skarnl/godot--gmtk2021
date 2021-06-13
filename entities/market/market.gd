@@ -152,6 +152,7 @@ func _position_in_grid(children: Array) -> void:
 		index += 1
 
 
+
 func _add_listeners() -> void:
 	for c in get_children():
 		c.connect('selected', self, '_on_MarketPerson_selection_changed')

@@ -52,8 +52,6 @@ func _on_Market_selection_updated(configurations: Array) -> void:
 		
 		var combined_configuration := _calculate_combined_configuration(configurations)
 		
-		print(combined_configuration)
-		
 		result.set_updated_configuration( combined_configuration )
 		result_preview.set_updated_configuration( combined_configuration )
 		
